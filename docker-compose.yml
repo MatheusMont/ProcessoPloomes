@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  apiploomes.api:
+    image: ${DOCKER_REGISTRY-}apiploomesapi
+    build:
+      context: .
+      dockerfile: ApiPloomes.API/Dockerfile
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+
+    environment:
+      MSSQL_SA_PASSWORD: "AdminPassword123123!"
+      PASSWORD: root
+      USERNAME: root
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      ENABLE_SSL: "false"
+
+    ports:
+      - "1433:1433"
