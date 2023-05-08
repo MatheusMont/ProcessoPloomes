@@ -78,7 +78,6 @@ namespace ApiPloomes.DOMAIN.Services
                 if (user == null)
                     NotifyErrorMessage("Email", "Este email não está cadastrado");
 
-                user = new User();
                 return user;
             }
             catch (Exception e)

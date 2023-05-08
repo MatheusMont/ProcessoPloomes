@@ -21,7 +21,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //Adição do Contexto do entity framework
 builder.Services.AddDbContext<PloomesContext>(options =>
     options
-    .UseSqlServer(builder.Configuration.GetConnectionString("DbCOnnection"))
+    .UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"))
 );
 
 builder.Services.AddSwaggerGen(c =>
@@ -46,3 +46,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+public partial class Program { };
