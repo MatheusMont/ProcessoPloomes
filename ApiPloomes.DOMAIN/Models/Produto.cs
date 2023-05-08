@@ -11,7 +11,10 @@ namespace ApiPloomes.DOMAIN.Models
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public double Preco { get; set; }
+
+        public Guid CatyegoriaId { get; set; }
         public Categoria Categoria { get; set; }
+        public Guid UsuarioId { get; set; }
         public User Usuario { get; set; }
     }
 }

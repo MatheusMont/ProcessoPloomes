@@ -1,6 +1,7 @@
 using ApiPloomes.API.Configurations;
 using ApiPloomes.DATA.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,14 +15,23 @@ builder.Services.AddSwaggerGen();
 //Injeção de dependência
 builder.Services.ResolveDependencies();
 
-//Adição do Contexto do entity framework
+//Injeção do AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+//Adição do Contexto do entity framework
 builder.Services.AddDbContext<PloomesContext>(options =>
     options
     .UseSqlServer(builder.Configuration.GetConnectionString("DbCOnnection"))
 );
 
+builder.Services.AddSwaggerGen(c =>
+{
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -29,6 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseAuthorization();
 

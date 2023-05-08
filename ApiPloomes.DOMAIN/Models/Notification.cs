@@ -14,7 +14,7 @@ namespace ApiPloomes.DOMAIN.Models
         public Notification(string field, string message)
         {
             Field = field;
-            message = message;
+            Message = message;
         }
     }
 }
