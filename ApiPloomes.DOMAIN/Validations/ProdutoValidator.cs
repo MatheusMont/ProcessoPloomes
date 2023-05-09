@@ -12,7 +12,11 @@ namespace ApiPloomes.DOMAIN.Validations
     {
         public ProdutoValidator()
         {
-            RuleFor(p => p.Categoria)
+            RuleFor(p => p.CategoriaId)
+                .NotEmpty()
+                .WithMessage("{PropertyName} deve ser informado");
+
+            RuleFor(p => p.UsuarioId)
                 .NotEmpty()
                 .WithMessage("{PropertyName} deve ser informado");
 

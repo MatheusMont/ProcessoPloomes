@@ -20,6 +20,9 @@ namespace ApiPloomes.API.Configurations
             services.AddScoped<ICategoriaServices, CategoriaService>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IProdutoServices, ProdutoServices>();
+
 
             return services;
         }

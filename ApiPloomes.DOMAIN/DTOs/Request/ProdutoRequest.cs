@@ -4,17 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiPloomes.DOMAIN.Models
+namespace ApiPloomes.DOMAIN.DTOs.Request
 {
-    public class Produto : Entity
+    public class ProdutoRequest
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public double Preco { get; set; }
 
         public Guid CategoriaId { get; set; }
-        public Categoria Categoria { get; set; }
         public Guid UsuarioId { get; set; }
-        public User Usuario { get; set; }
     }
 }

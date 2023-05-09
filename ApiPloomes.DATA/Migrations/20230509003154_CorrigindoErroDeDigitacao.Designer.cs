@@ -4,6 +4,7 @@ using ApiPloomes.DATA.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiPloomes.DATA.Migrations
 {
     [DbContext(typeof(PloomesContext))]
-    partial class PloomesContextModelSnapshot : ModelSnapshot
+    [Migration("20230509003154_CorrigindoErroDeDigitacao")]
+    partial class CorrigindoErroDeDigitacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,7 +49,7 @@ namespace ApiPloomes.DATA.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categorias", (string)null);
+                    b.ToTable("Categorias");
                 });
 
             modelBuilder.Entity("ApiPloomes.DOMAIN.Models.Produto", b =>
@@ -90,7 +93,7 @@ namespace ApiPloomes.DATA.Migrations
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Produtos", (string)null);
+                    b.ToTable("Produtos");
                 });
 
             modelBuilder.Entity("ApiPloomes.DOMAIN.Models.User", b =>
@@ -125,7 +128,7 @@ namespace ApiPloomes.DATA.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ApiPloomes.DOMAIN.Models.Produto", b =>

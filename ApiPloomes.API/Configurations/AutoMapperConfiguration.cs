@@ -15,7 +15,14 @@ namespace ApiPloomes.API.Configurations
 
             CreateMap<CategoriaRequest, Categoria>().ReverseMap();
             CreateMap<Categoria, CategoriaResponse>().ReverseMap();
-            //CreateMap<List<Categoria>, List<CategoriaResponse>>().ReverseMap();
+
+            CreateMap<ProdutoRequest, Produto>();
+            CreateMap<Produto, ProdutoResponse>()
+                .ForMember(dest => dest.Usuario, opts => opts.MapFrom(m => m.Usuario))
+                .ForMember(p => p.Categoria, opts => opts.MapFrom(m => m.Categoria));
+
+            //CreateMap<List<Produto>, List<ProdutoResponse>>();
+
         }
     }
 }
