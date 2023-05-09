@@ -17,9 +17,9 @@ namespace ApiPloomes.TESTS.Configurations.Mocks
             {
                 var provider = scope.ServiceProvider;
 
-                using (var userDbContext = provider.GetRequiredService<PloomesContext>())
+                using (var testsDbContext = provider.GetRequiredService<PloomesContext>())
                 {
-                    await userDbContext.Database.EnsureCreatedAsync();
+                    await testsDbContext.Database.EnsureCreatedAsync();
 
 
                     var categoria1 = new Categoria();
@@ -33,9 +33,9 @@ namespace ApiPloomes.TESTS.Configurations.Mocks
 
                     if (create)
                     {
-                        await userDbContext.Categorias.AddAsync(categoria1);
-                        await userDbContext.Categorias.AddAsync(categoria2);
-                        await userDbContext.SaveChangesAsync();
+                        await testsDbContext.Categorias.AddAsync(categoria1);
+                        await testsDbContext.Categorias.AddAsync(categoria2);
+                        await testsDbContext.SaveChangesAsync();
                     }
                 }
             }

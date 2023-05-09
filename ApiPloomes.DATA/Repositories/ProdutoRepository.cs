@@ -40,5 +40,12 @@ namespace ApiPloomes.DATA.Repositories
                                     .Include(p => p.Categoria)
                                     .Where(p => p.Active == true).ToList();
         }
+
+        public async Task<Produto> GetById(Guid id)
+        {
+            return _context.Produtos.Include(p => p.Usuario)
+                                    .Include(p => p.Categoria)
+                                    .FirstOrDefault(p => p.Id == id && p.Active == true);
+        }
     }
 }

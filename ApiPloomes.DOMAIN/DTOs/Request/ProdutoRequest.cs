@@ -14,5 +14,16 @@ namespace ApiPloomes.DOMAIN.DTOs.Request
 
         public Guid CategoriaId { get; set; }
         public Guid UsuarioId { get; set; }
+
+        public ProdutoRequest(string nome, string descricao, double preco, Guid categoriaId, Guid usuarioId)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            Preco = preco;
+            CategoriaId = categoriaId;
+            UsuarioId = usuarioId;
+        }
+
+        public ProdutoRequest() { }
     }
 }
