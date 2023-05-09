@@ -32,6 +32,8 @@ namespace ApiPloomes.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Um erro ou as informações públicas do usuário.</returns>
+        /// <response code = "201">Os dados públicos do usuário buscado.</response>
+        /// <response code = "400">Retorna uma ou mais mensagens de erro.</response>
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
@@ -47,6 +49,8 @@ namespace ApiPloomes.API.Controllers
         /// </summary>
         /// <param name="email"></param>
         /// <returns>Um erro ou as informações públicas do usuário.</returns>
+        /// <response code = "201">Os dados públicos do usuário buscado.</response>
+        /// <response code = "400">Retorna uma ou mais mensagens de erro.</response>
         [HttpGet("{email}")]
         public async Task<IActionResult> GetUserByEmail(string email)
         {
@@ -79,8 +83,10 @@ namespace ApiPloomes.API.Controllers
         /// <summary>
         /// Atualiza os dados públicos do usuário.
         /// </summary>
-        /// <param name="email"></param>
+        /// <param name="userDto"></param>
         /// <returns>Confirmação da execução ou os erros que impediram.</returns>
+        /// <response code = "201">Retorna uma mensagem de sucesso de atualização do usuário.</response>
+        /// <response code = "400">Retorna uma ou mais mensagens de erro.</response>
         [HttpPut("Update/{id:Guid}")]
         public async Task<IActionResult> UpdateUser([FromBody] UserUpdateRequest userDto, Guid id)
         {
@@ -96,8 +102,11 @@ namespace ApiPloomes.API.Controllers
         /// <summary>
         /// Muda a senha do usuário
         /// </summary>
-        /// <param name="password, id"></param>
+        /// <param name="password"></param>
+        /// <param name="id"></param>
         /// <returns>Confirmação da execução ou os erros que impediram.</returns>
+        /// <response code = "201">Retorna uma mensagem de sucesso de alteração da senha do usuário.</response>
+        /// <response code = "400">Retorna uma ou mais mensagens de erro.</response>
         [HttpPut("Update/ChangePassword/{id:Guid}")]
         public async Task<IActionResult> ChangePassword([FromBody] string password, Guid id)
         {
@@ -114,8 +123,10 @@ namespace ApiPloomes.API.Controllers
         /// <summary>
         /// Remove o usuário
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="id"></param>
         /// <returns>Confirmação da execução ou os erros que impediram.</returns>
+        /// <response code = "201">Retorna uma mensagem de sucesso de deleção de usuário.</response>
+        /// <response code = "400">Retorna uma ou mais mensagens de erro.</response>
         [HttpDelete("Delete/{id:Guid}")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
@@ -131,6 +142,8 @@ namespace ApiPloomes.API.Controllers
         /// </summary>
         /// <param name="email"></param>
         /// <returns>Um erro ou as informações do usuário.</returns>
+        /// <response code = "201">Retorna todos os dados do usuário buscado.</response>
+        /// <response code = "400">Retorna uma ou mais mensagens de erro.</response>
         [HttpGet("master/{email}")]
         public async Task<IActionResult> GetUserByEmailMaster(string email)
         {

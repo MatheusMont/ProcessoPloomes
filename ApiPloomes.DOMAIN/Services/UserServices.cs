@@ -91,6 +91,12 @@ namespace ApiPloomes.DOMAIN.Services
         {
             try
             {
+                if (await _repository.Exists(id) == false)
+                {
+                    NotifyErrorMessage("ID", "O usuário não existe");
+                    return;
+                }
+
                 user.Password = "ValidUserPassword2@";
                 var validation = ExecuteValidation(new UserValidator(), user);
 
@@ -101,6 +107,7 @@ namespace ApiPloomes.DOMAIN.Services
 
                 updateUser.Email = user.Email;
                 updateUser.Username = user.Username;
+                updateUser.UpdateDate = DateTime.UtcNow;
 
                 _repository.Update(updateUser);
                 await _repository.Save();
@@ -115,6 +122,12 @@ namespace ApiPloomes.DOMAIN.Services
         {
             try
             {
+                if(await _repository.Exists(id) == false)
+                {
+                    NotifyErrorMessage("ID", "O usuário não existe");
+                    return;
+                }
+
                 await _repository.Delete(id);
                 await _repository.Save();
             }

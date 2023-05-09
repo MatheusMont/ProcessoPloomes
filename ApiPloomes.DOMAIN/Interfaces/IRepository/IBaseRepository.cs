@@ -15,5 +15,6 @@ namespace ApiPloomes.DOMAIN.Interfaces.IRepository
         void Update(T entity);
         Task Delete(Guid id);
         Task<int> Save();
+        Task<bool> Exists(Guid id);
     }
 }

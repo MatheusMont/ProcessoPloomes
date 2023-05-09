@@ -25,7 +25,7 @@ namespace ApiPloomes.DATA.Repositories
 
         public async Task Delete(Guid id)
         {
-            var result = _context.Set<T>().First(u => u.Id == id && u.Active == true);
+            var result = _context.Set<T>().First(e => e.Id == id && e.Active == true);
 
             result.Active = false;
             result.DeletionDate = DateTime.UtcNow;
@@ -42,17 +42,22 @@ namespace ApiPloomes.DATA.Repositories
 
         public async Task<List<T>> GetAll()
         {
-            return _context.Set<T>().Where(u => u.Active == true).ToList();
+            return _context.Set<T>().Where(e => e.Active == true).ToList();
         }
 
         public async Task<T> GetById(Guid id)
         {
-            return _context.Set<T>().First(u => u.Id == id && u.Active == true);
+            return _context.Set<T>().First(e => e.Id == id && e.Active == true);
         }
 
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
+        }
+
+        public async Task<bool> Exists(Guid id)
+        {
+            return _context.Set<T>().Any(e => e.Id == id && e.Active == true);
         }
 
         public async Task<int> Save()

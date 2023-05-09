@@ -12,6 +12,10 @@ namespace ApiPloomes.API.Configurations
             CreateMap<UserCreationRequest, User>();
             CreateMap<UserUpdateRequest, User>();
             CreateMap<User, UserResponse>();
+
+            CreateMap<CategoriaRequest, Categoria>().ReverseMap();
+            CreateMap<Categoria, CategoriaResponse>().ReverseMap();
+            //CreateMap<List<Categoria>, List<CategoriaResponse>>().ReverseMap();
         }
     }
 }
